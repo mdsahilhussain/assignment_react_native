@@ -1,50 +1,131 @@
-# Welcome to your Expo app 👋
+# 📦 Product List Manager — React Native
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Overview
 
-## Get started
+A **React Native** mobile application for managing a product list with advanced state handling, including optimistic updates, undo/redo functionality, and background data synchronization.
 
-1. Install dependencies
+The focus of this implementation is not just UI, but handling real-world complexities like async operations, race conditions, and state consistency — all adapted for a native mobile environment.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## Key Features
 
-   ```bash
-   npx expo start
-   ```
+- Product list with search, filter, and sorting
+- Inline category editing with optimistic updates
+- Undo / Redo using patch-based history
+- Simulated API with delay and failure handling
+- Background data updates (price & rating)
+- Conflict resolution between user actions and server updates
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Architecture Decisions
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### State Management
 
-## Get a fresh project
+Used **Zustand** for:
+- Lightweight global state
+- Fine-grained subscriptions
+- Better control over async + history logic
 
-When you're ready, run:
+### Data Flow
 
-```bash
-npm run reset-project
+```
+Server State (products) --> Derived State (filter/search/sort) --> UI
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Optimistic Updates
 
-## Learn more
+- UI updates immediately on user action
+- API call happens in the background
+- On failure → automatic rollback to previous state
 
-To learn more about developing your project with Expo, look at the following resources:
+### Undo / Redo Strategy
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- Implemented using patch-based history
+- Stores only category changes
+- Efficient and memory-friendly
 
-## Join the community
+### Race Condition Handling
 
-Join our community of developers creating universal apps.
+- Each update is assigned a unique `requestId`
+- Only the latest response is applied
+- Prevents stale updates from overriding newer ones
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Background Sync
+
+- Polling every 5 seconds
+- Updates price & rating fields
+- Skips rows currently under user interaction
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | React Native (with Expo) |
+| Language | TypeScript |
+| State Management | Zustand |
+| Styling | StyleSheet / NativeWind (Tailwind for RN) |
+| Navigation | React Navigation |
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable UI components
+├── store/            # Zustand store + slices
+├── hooks/            # Custom React hooks
+├── services/         # API simulation layer
+└── types/            # Shared TypeScript types
+```
+
+---
+
+## Prerequisites
+
+- Node.js >= 18
+- Expo CLI (`npm install -g expo-cli`)
+- iOS Simulator (macOS) or Android Emulator, or the **Expo Go** app on a physical device
+
+---
+
+## How to Run
+
+```bash
+# Install dependencies
+npm install
+
+# Start the Expo development server
+npx expo start
+```
+
+Then press:
+- `i` to open in iOS Simulator
+- `a` to open in Android Emulator
+- Scan the QR code with **Expo Go** to run on a physical device
+
+---
+
+## Running on a Physical Device
+
+1. Install **Expo Go** from the App Store or Google Play
+2. Ensure your phone and development machine are on the same Wi-Fi network
+3. Scan the QR code shown in the terminal after `npx expo start`
+
+---
+
+## Building for Production
+
+```bash
+# Build for Android
+npx expo build:android
+
+# Build for iOS
+npx expo build:ios
+```
+
+> For production builds, it is recommended to use **EAS Build**: `npx eas build`

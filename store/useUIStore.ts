@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import type { Category } from "../types/product";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+//  Types 
 
 export type SortField = "price" | "rating";
 export type SortOrder = "asc" | "desc";
@@ -23,7 +23,7 @@ interface UIStoreState {
   setCurrentPage: (page: number) => void;
 }
 
-// ─── Store ────────────────────────────────────────────────────────────────────
+//  Store 
 
 const DEFAULT_STATE = {
   search: "",

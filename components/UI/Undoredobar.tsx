@@ -1,5 +1,6 @@
-import { useUndoRedo } from '@/hooks/useUndoRedo'
 import { Text, TouchableOpacity, View } from 'react-native'
+
+import { useUndoRedo } from '@/hooks/useUndoRedo'
 
 export function UndoRedoBar() {
   const { undo, redo, canUndo, canRedo } = useUndoRedo()

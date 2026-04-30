@@ -1,6 +1,7 @@
-import { SortField, useUIStore } from '@/store/useUIStore'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import CategoryDropdown from './CategoryDropdown'
+
+import { SortField, useUIStore } from '@/store/useUIStore'
+import CategoryDropdown from '../CategoryDropdown'
 import { UndoRedoBar } from './Undoredobar'
 
 

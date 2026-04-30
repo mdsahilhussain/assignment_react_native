@@ -1,8 +1,9 @@
+import { useState } from 'react'
+import { Modal, Text, TouchableOpacity, View } from 'react-native'
+
 import { useUIStore } from '@/store/useUIStore'
 import { Category } from '@/types/product'
 import { CATEGORIES } from '@/utils/mockData'
-import { useState } from 'react'
-import { Modal, Text, TouchableOpacity, View } from 'react-native'
 
 export default function CategoryDropdown() {
   const filterCategory = useUIStore((s) => s.filterCategory)

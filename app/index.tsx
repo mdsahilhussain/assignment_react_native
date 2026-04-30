@@ -1,7 +1,7 @@
-import { ProductScreen } from '@/components/ProductScreen'
 import { useBackgroundSync } from '@/hooks/useBackgroundSync'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { ProductScreen } from '@/components/Product/ProductScreen'
 
 function RootApp() {
   useBackgroundSync()

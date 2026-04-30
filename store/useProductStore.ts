@@ -1,9 +1,10 @@
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+
 import { updateProductCategory } from "@/services/productApi";
 import type { HistoryEntry, ProductStoreState } from "@/types/history";
 import type { RuntimeProduct } from "@/types/product";
 import { MOCK_PRODUCTS, hydrateProducts } from "@/utils/mockData";
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
 
 //  Helpers
 function updateProduct(

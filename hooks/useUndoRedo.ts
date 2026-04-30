@@ -1,5 +1,3 @@
-// app/hooks/useUndoRedo.ts
-
 import { useProductStore } from "@/store/useProductStore"
 
 export function useUndoRedo() {
@@ -8,6 +6,5 @@ export function useUndoRedo() {
   const canUndo = useProductStore((s) => s.canUndo)
   const canRedo = useProductStore((s) => s.canRedo)
 
-  // No keyboard bindings on mobile — undo/redo exposed via buttons only
   return { undo, redo, canUndo, canRedo }
 }

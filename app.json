@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "assignment_react_native",
-    "slug": "assignment_react_native",
+    "slug": "assignment-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -56,6 +56,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "052eaeed-8a3c-4283-84ac-1d32c941043e"
+      }
+    },
+    "owner": "mdsahilhussains-organization"
   }
 }

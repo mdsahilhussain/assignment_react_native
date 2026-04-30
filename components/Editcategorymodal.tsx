@@ -1,7 +1,8 @@
-import { Category, RuntimeProduct } from '@/types/product'
 import { useState } from 'react'
 import { Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
+import { Category, RuntimeProduct } from '@/types/product'
 import { useProductActions } from '../hooks/useProductActions'
 import { CATEGORIES } from '../utils/mockData'
 
