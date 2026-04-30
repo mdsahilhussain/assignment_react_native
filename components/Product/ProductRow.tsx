@@ -1,8 +1,10 @@
-import { RuntimeProduct } from '@/types/product'
 import { memo, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import { EditCategoryModal } from './Editcategorymodal'
-import { StatusBadge } from './Statusbadge'
+import { Pressable, Text, View } from 'react-native'
+
+import { StatusBadge } from '@/components/UI/Statusbadge'
+import { RuntimeProduct } from '@/types/product'
+import { EditCategoryModal } from '../Editcategorymodal'
+
 
 interface Props {
   product: RuntimeProduct
@@ -65,7 +67,7 @@ export const ProductRow = memo(function ProductRow({ product }: Props) {
         </View>
 
         {/* Right — edit button */}
-        <TouchableOpacity
+        <Pressable
           onPress={() => setModalOpen(true)}
           disabled={isLocked}
           hitSlop={8}
@@ -78,7 +80,7 @@ export const ProductRow = memo(function ProductRow({ product }: Props) {
           <Text className={`text-xs font-mono ${isLocked ? 'text-zinc-700' : 'text-zinc-400'}`}>
             Edit
           </Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
 
       <EditCategoryModal

@@ -25,7 +25,7 @@ export const API_CONFIG: ApiConfig = {
   RATING_MAX: 5.0,
 }
 
-// ─── Private Helpers ──────────────────────────────────────────────────────────
+//  Private Helpers 
 function simulateDelay(
   min = API_CONFIG.MIN_DELAY_MS,
   max = API_CONFIG.MAX_DELAY_MS
@@ -55,7 +55,7 @@ function applyDrift(value: number, driftFactor: number): number {
   return Math.round((value + delta) * 100) / 100
 }
 
-// ─── Public API ───────────────────────────────────────────────────────────────
+//  Public API 
 export async function updateProductCategory(
   productId: number,
   newCategory: Category

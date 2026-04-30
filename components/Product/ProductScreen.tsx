@@ -1,13 +1,14 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { FlatList, Text, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 import { useProductStore } from '@/store/useProductStore'
 import { useUIStore } from '@/store/useUIStore'
 import { RuntimeProduct } from '@/types/product'
 import { deriveProducts } from '@/utils/deriveProducts'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { FlatList, Text, View } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { Toast } from '../UI/Toast'
+import { Toolbar } from '../UI/Toolbar'
 import { ProductRow } from './ProductRow'
-import { Toast } from './Toast'
-import { Toolbar } from './Toolbar'
 
 
 const ROW_HEIGHT = 72
